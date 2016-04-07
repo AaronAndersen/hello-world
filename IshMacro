@@ -1,0 +1,20 @@
+'You can put this in any sub you want. Macro1() is just an example
+Sub Macro1()
+    Dim columnNumber, rows As Long
+    'Set column A = 1, B = 2, C = 3, etc...
+    columnNumber = 1
+    'Total number of rows or the last row this will affect
+    'A25 would mean 25 for 25 rows.
+    rows = 10
+    
+    For i = 1 To rows
+        With Cells(i, columnNumber)
+            If Not .Value = vbNullString Then
+                .AddComment
+                .Comment.Visible = False
+                .Comment.Text Text:=.Value
+                .Value = "" 'Remove this if you don't want to remove the data out of the field
+            End If
+        End With
+    Next i
+End Sub
